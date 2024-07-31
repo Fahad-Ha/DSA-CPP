@@ -44,6 +44,13 @@ class Stack {
         void getHeight() {
             cout << "Height: " << height << endl;
         }
+
+        void push(int value) {
+            Node* newNode = new Node(value);
+            newNode->next = top;
+            top = newNode;
+            height++;
+        }
 };
 
 int main()
@@ -52,5 +59,7 @@ int main()
 
     myStack->getTop();
     myStack->getHeight();
+
+    myStack->push(5);
     myStack->printStack();
 }
