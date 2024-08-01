@@ -37,6 +37,7 @@ class Stack {
             }
         }
 
+
         void getTop() {
             cout << "Top: " << top->value << endl;
         }
@@ -50,6 +51,20 @@ class Stack {
             newNode->next = top;
             top = newNode;
             height++;
+        }
+
+        int pop() {
+            // INT_MIN the minimum value that an int (integer) type can hold
+            // since it represents the smallest possible integer, making it an unlikely real stack value.
+            if (height == 0) return INT_MIN;
+
+            Node* temp = top;
+            int poppedValue = top->value;
+            top = top->next;
+            delete temp;
+            height--;
+
+            return poppedValue;
         }
 };
 
