@@ -1,4 +1,4 @@
-    
+
 #include <iostream>
 using namespace std;
 
@@ -26,7 +26,7 @@ public:
         Node* newNode = new Node(value);
         first = newNode;
         last = newNode;
-        length++;
+        length = 1;
  
     }
 
