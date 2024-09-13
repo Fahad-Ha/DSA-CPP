@@ -50,6 +50,24 @@ public:
         length++;
     }
 
+    int dequeue() {
+        if (length == 0) return INT_MIN;
+
+        Node* temp = first;
+        int dequeuedValue = first->value;
+
+        if (length == 1) {
+            first = nullptr;
+            last = nullptr;
+        } else {
+            first = first->next;
+        }
+        
+        delete temp;
+        length--;
+        return dequeuedValue;
+    }
+
 
     void getFirst() {
         cout << "First: " << first->value << endl;
