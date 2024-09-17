@@ -25,33 +25,46 @@ class BinarySearchTree {
             root = nullptr;
         }  
 
-    bool insert(int value) {
+        bool insert(int value) {
+            Node* newNode = new Node(value);
+            
+            if (root == nullptr) {
+                root = newNode;
+                return true;
+            }
 
-        Node* newNode = new Node(value);
-        
-        if (root == nullptr) {
-            root = newNode;
-            return true;
+            Node* temp = root;
+
+            while (true) {
+                if (newNode->value == temp->value) return false;
+                if (newNode->value < temp->value) {
+                    if (temp->left == nullptr) {
+                    temp->left = newNode;
+                    return true;
+                    } 
+                    temp = temp->left;
+                } else {
+                    if (temp->right == nullptr) 
+                    temp->right = newNode;
+                    return true;
+                }
+                temp = temp->right;
+                }
         }
 
-        Node* temp = root;
-
-        while (true) {
-            if (newNode->value == temp->value) return false;
-            if (newNode->value < temp->value) {
-                if (temp->left == nullptr) {
-                temp->left = newNode;
-                return true;
-                } 
-                temp = temp->left;
-            } else {
-                if (temp->right == nullptr) 
-                temp->right = newNode;
-                return true;
+        bool contains(int value) {
+            Node* temp = root;
+            while (temp) {
+                if (value < temp->value) {
+                    temp = temp->left;
+                } else if (value > temp->value) {
+                    temp = temp->right;
+                } else {
+                    return true;
+                }
             }
-            temp = temp->right;
-            }
-    }    
+            return false;
+        }    
 };
 
 
