@@ -33,6 +33,20 @@ class HashTable {
             }
             return hash;
         }
+
+        void set(string key, int value) {
+            int index = hash(key);
+            Node* newNode = new Node(key, value);
+            if (dataMap[index] == nullptr) {
+                dataMap[index] = newNode;
+            } else {
+                Node* temp = dataMap[index];
+                while (temp->next != nullptr) {
+                    temp = temp->next;
+                }
+                temp->next = newNode;
+            }
+        }
 };
 
 
