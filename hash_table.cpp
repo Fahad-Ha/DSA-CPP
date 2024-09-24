@@ -57,6 +57,18 @@ class HashTable {
             }
             return 0;
         }
+
+        vector<string> keys() {
+            vector<string> allkeys;
+            for (int i = 0; i < SIZE; i++) {
+                Node* temp = dataMap[i];
+                while (temp != nullptr) {
+                    allkeys.push_back(temp->key);
+                    temp = temp->next;
+                }
+            }
+            return allkeys;
+        }
 };
 
 
